@@ -26,6 +26,10 @@
             --glass-border: rgba(255, 255, 255, 0.08);
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg-dark);
             color: #ffffff;
@@ -37,6 +41,15 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
+        }
+
+        /* --- TYPOGRAPHY FOR TITLES --- */
+        .category-heading {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            margin: 80px 0 24px 0;
+            letter-spacing: -0.5px;
+            position: relative;
         }
 
         /* --- HERO SECTION --- */
@@ -309,7 +322,7 @@
             justify-content: center;
         }
 
-        /* --- PORTFOLIO GRID (UPDATED RATIO) --- */
+        /* --- PORTFOLIO GRID --- */
         .portfolio-section {
             padding: 40px 0;
         }
@@ -318,6 +331,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
+            margin-bottom: 20px;
         }
 
         .showcase-card {
@@ -325,7 +339,6 @@
             border: 1px solid var(--glass-border);
             border-radius: 24px;
             overflow: hidden;
-            /* CHANGED FROM 4/5 TO 16/9 FOR YOUTUBE CODES & ANIMATIONS */
             aspect-ratio: 16 / 9; 
             position: relative;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
@@ -352,10 +365,11 @@
         .showcase-card:hover video {
             transform: scale(1.03);
         }
+
         /* --- VERTICAL REELS GRID (9:16) --- */
         .reel-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columns looks perfect for vertical cards */
+            grid-template-columns: repeat(4, 1fr);
             gap: 24px;
             margin-bottom: 20px;
         }
@@ -365,7 +379,7 @@
             border: 1px solid var(--glass-border);
             border-radius: 24px;
             overflow: hidden;
-            aspect-ratio: 9 / 16; /* Forces the perfect vertical phone screen shape */
+            aspect-ratio: 9 / 16;
             position: relative;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
         }
@@ -386,30 +400,25 @@
             transform: scale(1.03);
         }
 
-        /* Responsive adjustments specifically for the vertical grid */
-        @media (max-width: 1024px) {
-            .reel-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .reel-grid { grid-template-columns: 1fr; }
-        }
-
         /* --- RESPONSIVE FIXES --- */
         @media (max-width: 1024px) {
             .hero-grid { grid-template-columns: 1fr; gap: 40px; }
             .hero-right-text { margin-left: 0; max-width: 100%; }
             .split-grid { grid-template-columns: 1fr; gap: 40px; }
-            /* Keep it readable on tablets */
             .showcase-grid { grid-template-columns: repeat(2, 1fr); }
+            .reel-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .hero-badges-row { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-            /* Drops to 1 column stacked on mobile */
             .showcase-grid { grid-template-columns: 1fr; }
             .brand-logos { gap: 24px; }
             .split-right-footer { flex-direction: column; align-items: flex-start; gap: 20px; }
+        }
+
+        @media (max-width: 600px) {
+            .reel-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -422,8 +431,8 @@
                 <div class="logo">Vision</div>
                 <ul class="nav-links">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Projects</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
                 </ul>
                 <a href="mailto:sarfaraz75010@gmail.com?subject=Video%20Editing%20Inquiry" class="btn-pill">
                     Get in touch 
@@ -491,7 +500,8 @@
         </div>
     </div>
 
-    <div class="split-section">
+    <!-- ABOUT ANCHOR ADDED HERE -->
+    <div class="split-section" id="about">
         <div class="container">
             <div class="split-grid">
                 <div class="split-left">
@@ -500,7 +510,7 @@
                 </div>
                 <div class="split-right">
                     <h3>3 years in mobile, 2 years in Desktop
-                      Hundreds of Clients , Varieties of clients with immersive demands.
+                       Hundreds of Clients , Varieties of clients with immersive demands.
                     </h3>
                     <div class="split-right-footer">
                         <p>Let's Build Something<br>Meaningful Together</p>
@@ -514,40 +524,35 @@
         </div>
     </div>
 
-    <div class="portfolio-section">
+    <!-- PROJECTS ANCHOR & ALL CATEGORIES ORGANIZED INSIDE ONE CONTAINER BELOW -->
+    <div class="portfolio-section" id="projects">
         <div class="container">
 
-          <h2 class="category-heading">UI Animations</h2>
+            <!-- CATEGORY 1: UI ANIMATIONS -->
+            <h2 class="category-heading">UI Animations</h2>
             <div class="showcase-grid">
-                
-                <!-- VIDEO SLOT FIXED TO 16:9 -->
                 <div class="showcase-card">
                     <video autoplay loop muted playsinline preload="metadata">
                         <source src="Uianimation56.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
-<div class="showcase-card">
+                <div class="showcase-card">
                     <video autoplay loop muted playsinline preload="metadata">
                         <source src="Uiporfolio.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>               
-               </div>
-
-              <div class="showcase-card">
+                </div>
+                <div class="showcase-card">
                     <video autoplay loop muted playsinline preload="metadata">
                         <source src="Ui.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
-
             </div>
-        </div>
-    </div>
-<!-- SECTION 2 HEADLINE -->
-            <h2 class="category-heading">Cinematic Motion graphics</h2>
-            
-            <!-- SECTION 2 VIDEOS -->
+
+            <!-- CATEGORY 2: CINEMATIC MOTION GRAPHICS -->
+            <h2 class="category-heading">Cinematic Motion Graphics</h2>
             <div class="showcase-grid">
                 <div class="showcase-card">
                     <video autoplay loop muted playsinline preload="metadata">
@@ -566,11 +571,8 @@
                 </div>
             </div>
 
-
-            <!-- SECTION 3 HEADLINE -->
+            <!-- CATEGORY 3: FEATURED WORKS -->
             <h2 class="category-heading">My Featured Works</h2>
-            
-            <!-- SECTION 3 VIDEOS -->
             <div class="showcase-grid">
                 <div class="showcase-card">
                     <video autoplay loop muted playsinline preload="metadata">
@@ -588,39 +590,34 @@
                     </video>
                 </div>
             </div>
-<!-- SECTION 4: REELS & SHORT-FORM WORK -->
+
+            <!-- CATEGORY 4: REELS & VERTICAL CONTENT -->
             <h2 class="category-heading">Reel Edits & Engagement Shorts</h2>
-            
             <div class="reel-grid">
-                <!-- Reel Card 1 -->
                 <div class="reel-card">
                     <video autoplay loop muted playsinline preload="metadata">
                         <source src="oil.mp4" type="video/mp4">
                     </video>
                 </div>
-                
-                <!-- Reel Card 2 -->
                 <div class="reel-card">
                     <video autoplay loop muted playsinline preload="metadata">
                         <source src="reel.mp4" type="video/mp4">
                     </video>
                 </div>
-                
-                <!-- Reel Card 3 -->
                 <div class="reel-card">
                     <video autoplay loop muted playsinline preload="metadata">
                         <source src="reel-video-3.mp4" type="video/mp4">
                     </video>
                 </div>
-                
-                <!-- Reel Card 4 -->
                 <div class="reel-card">
                     <video autoplay loop muted playsinline preload="metadata">
                         <source src="reel-video-4.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
-        </div>
-    </div>
+
+        </div> <!-- /container -->
+    </div> <!-- /portfolio-section -->
+
 </body>
 </html>
