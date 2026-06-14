@@ -242,20 +242,19 @@
             padding-bottom: 6px;
         }
 
-        /* --- STAGGERED LIGHT BLACK UNDERLINE EFFECT --- */
+        /* --- UNDERLINE EFFECT --- */
         .badge-item p::after {
             content: '';
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 0; /* Starts completely hidden */
+            width: 0;
             height: 3px;
-            background-color: rgba(0, 0, 0, 0.4); /* Dynamic elegant light black underline */
+            background-color: rgba(0, 0, 0, 0.4);
             border-radius: 2px;
             transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Triggered sequentially via JavaScript when badge comes on-screen */
         .badge-item.animate-underline p::after {
             width: 100%;
         }
@@ -384,7 +383,7 @@
             justify-content: center;
         }
 
-        /* --- PORTFOLIO GRID --- */
+        /* --- PORTFOLIO STANDARD GRID --- */
         .portfolio-section {
             padding: 40px 0;
         }
@@ -411,7 +410,6 @@
             border-color: rgba(14, 165, 233, 0.4);
         }
 
-        .showcase-card img,
         .showcase-card video {
             width: 100%;
             height: 100%;
@@ -419,13 +417,105 @@
             transition: transform 0.6s ease;
         }
 
-        .showcase-card img {
-            filter: grayscale(20%);
+        /* --- SOUND DESIGN VERTICAL STACK SYSTEM --- */
+        .sound-design-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 20px;
         }
 
-        .showcase-card:hover img,
-        .showcase-card:hover video {
-            transform: scale(1.03);
+        .sound-track-row {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+            align-items: stretch;
+            background: var(--glass-card);
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            border-radius: 24px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
+        }
+
+        .sound-track-row:hover {
+            transform: translateY(-4px);
+            border-color: rgba(14, 165, 233, 0.4);
+        }
+
+        .sound-video-box {
+            position: relative;
+            aspect-ratio: 16 / 9; /* Clean uniformity match with standard showcase cards */
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .sound-video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sound-card-logo {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(7, 13, 14, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 8px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .sound-card-logo svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+
+        .waveform-box-wrapper {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .waveform-timeline-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .waveform-svg-mock {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .playhead-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--teal-bright);
+            border-radius: 2px;
+            box-shadow: 0 0 12px var(--teal-bright);
+            pointer-events: none;
+            transform: translateX(0);
+            will-change: transform;
         }
 
         /* --- VERTICAL REELS GRID (9:16) --- */
@@ -458,16 +548,13 @@
             transition: transform 0.6s ease;
         }
 
-        .reel-card:hover video {
-            transform: scale(1.03);
-        }
-
         /* --- RESPONSIVE FIXES --- */
         @media (max-width: 1024px) {
             .hero-grid { grid-template-columns: 1fr; gap: 40px; }
             .hero-right-text { margin-left: 0; max-width: 100%; }
             .split-grid { grid-template-columns: 1fr; gap: 40px; }
             .showcase-grid { grid-template-columns: repeat(2, 1fr); }
+            .sound-track-row { grid-template-columns: 1fr; }
             .reel-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
@@ -502,7 +589,6 @@
                         Get in touch 
                         <div class="arrow-circle">→</div>
                     </a>
-                    <!-- Remember to change YOURNUMBER below -->
                     <a href="https://wa.me/7501016646?text=Hi%20Sarfaraz,%20I'm%20interested%20in%20your%20video%20editing%20services!" target="_blank" class="btn-whatsapp">
                         <svg viewBox="0 0 24 24">
                             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.528 1.981 14.063.957 11.43.957c-5.442 0-9.87 4.372-9.874 9.802-.001 1.73.463 3.42 1.345 4.927l-.997 3.641 3.743-.973zm11.567-7.423c-.302-.151-1.786-.881-2.062-.981-.277-.1-.478-.151-.68.151-.202.302-.782.981-.96 1.182-.177.201-.355.226-.657.076-.301-.151-1.274-.47-2.426-1.493-.896-.8-1.5-1.787-1.275-2.122.176-.302.2-.473.351-.749.151-.276.075-.513-.038-.739-.113-.226-.68-1.637-.932-2.242-.246-.591-.496-.511-.68-.521-.176-.009-.377-.01-.58-.01-.202 0-.531.076-.808.377-.277.302-1.059 1.033-1.059 2.517 0 1.485 1.082 2.92 1.233 3.122.151.202 2.13 3.251 5.16 4.558.72.311 1.281.497 1.719.636.723.23 1.381.19 1.901.112.579-.088 1.786-.73 2.038-1.436.252-.704.252-1.307.176-1.436-.075-.127-.277-.202-.579-.353z"/>
@@ -524,7 +610,6 @@
                 </div>
             </div>
 
-            <!-- THE TARGET ROW WITH THE SCROLL-TRIGGERED STAGGERED ANIMATIONS -->
             <div class="hero-badges-row" id="badges-section">
                 <div class="badge-item">
                     <span>#01</span>
@@ -573,7 +658,6 @@
         </div>
     </div>
 
-    <!-- ABOUT ANCHOR -->
     <div class="split-section" id="about">
         <div class="container">
             <div class="split-grid">
@@ -583,7 +667,7 @@
                 </div>
                 <div class="split-right">
                     <h3>3 years in mobile, 2 years in Desktop
-                       Hundreds of Clients , Varieties of clients with immersive demands.
+                        Hundreds of Clients , Varieties of clients with immersive demands.
                     </h3>
                     <div class="split-right-footer">
                         <p>Let's Build Something<br>Meaningful Together</p>
@@ -592,7 +676,6 @@
                                 Get in touch 
                                 <div class="arrow-circle">→</div>
                             </a>
-                            <!-- Remember to change YOURNUMBER below -->
                             <a href="https://wa.me/7501016646?text=Hi%20Sarfaraz,%20I'm%20interested%20in%20your%20video%20editing%20services!" target="_blank" class="btn-whatsapp">
                                 <svg viewBox="0 0 24 24">
                                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.528 1.981 14.063.957 11.43.957c-5.442 0-9.87 4.372-9.874 9.802-.001 1.73.463 3.42 1.345 4.927l-.997 3.641 3.743-.973zm11.567-7.423c-.302-.151-1.786-.881-2.062-.981-.277-.1-.478-.151-.68.151-.202.302-.782.981-.96 1.182-.177.201-.355.226-.657.076-.301-.151-1.274-.47-2.426-1.493-.896-.8-1.5-1.787-1.275-2.122.176-.302.2-.473.351-.749.151-.276.075-.513-.038-.739-.113-.226-.68-1.637-.932-2.242-.246-.591-.496-.511-.68-.521-.176-.009-.377-.01-.58-.01-.202 0-.531.076-.808.377-.277.302-1.059 1.033-1.059 2.517 0 1.485 1.082 2.92 1.233 3.122.151.202 2.13 3.251 5.16 4.558.72.311 1.281.497 1.719.636.723.23 1.381.19 1.901.112.579-.088 1.786-.73 2.038-1.436.252-.704.252-1.307.176-1.436-.075-.127-.277-.202-.579-.353z"/>
@@ -606,7 +689,7 @@
         </div>
     </div>
 
-    <!-- PROJECTS ANCHOR & ALL CATEGORIES -->
+    <!-- MAIN PORTFOLIO SECTIONS CONTAINER -->
     <div class="portfolio-section" id="projects">
         <div class="container">
 
@@ -616,19 +699,16 @@
                 <div class="showcase-card">
                     <video autoplay loop muted playsinline preload="metadata">
                         <source src="Uianimation56.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="showcase-card">
                     <video autoplay loop muted playsinline preload="metadata">
                         <source src="Uiporfolio.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>               
+                    </video>                
                 </div>
                 <div class="showcase-card">
                     <video autoplay loop muted playsinline preload="metadata">
                         <source src="Ui.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
                     </video>
                 </div>
             </div>
@@ -653,27 +733,94 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 3: FEATURED WORKS -->
-            <h2 class="category-heading">My Featured Works</h2>
-            <div class="showcase-grid">
-                <div class="showcase-card">
-                    <video autoplay loop muted playsinline preload="metadata">
-                        <source src="work-video-1.mp4" type="video/mp4">
-                    </video>
+            <!-- REPLACED FEATURED WORKS WITH VERTICALLY STACKED SOUND DESIGN SHOWCASE -->
+            <h2 class="category-heading">Sound Design Showcase</h2>
+            <div class="sound-design-stack">
+                
+                <!-- Track Card 1 -->
+                <div class="sound-track-row">
+                    <div class="sound-video-box">
+                        <div class="sound-card-logo">
+                            <svg viewBox="0 0 24 24"><path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.5A1.5 1.5 0 003 9v6a1.5 1.5 0 001.5 1.5h2.44l4.5 4.5c.944.945 2.56.276 2.56-1.06V4.06zM18.57 12a3.75 3.75 0 00-2.195-3.411.75.75 0 10-.643 1.357A2.25 2.25 0 0117.07 12a2.25 2.25 0 01-1.338 2.054.75.75 0 10.642 1.356A3.75 3.75 0 0018.57 12zM21 12a7.46 7.46 0 00-4.012-6.645.75.75 0 10-.732 1.314A5.961 5.961 0 0119.5 12a5.961 5.961 0 01-3.244 5.331.75.75 0 10.732 1.314A7.46 7.46 0 0021 12z"/></svg>
+                        </div>
+                        <video class="sync-video" loop muted playsinline preload="metadata">
+                            <source src="sound-design-1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="waveform-box-wrapper">
+                        <div class="waveform-timeline-container">
+                            <svg class="waveform-svg-mock" viewBox="0 0 400 60" preserveAspectRatio="none">
+                                <g fill="url(#wave-gradient-1)" opacity="0.85">
+                                    <rect x="10" y="20" width="4" height="20" rx="2" /><rect x="25" y="10" width="4" height="40" rx="2" /><rect x="40" y="5" width="4" height="50" rx="2" /><rect x="55" y="15" width="4" height="30" rx="2" /><rect x="70" y="22" width="4" height="16" rx="2" /><rect x="85" y="8" width="4" height="44" rx="2" /><rect x="100" y="12" width="4" height="36" rx="2" /><rect x="115" y="25" width="4" height="10" rx="2" /><rect x="130" y="5" width="4" height="50" rx="2" /><rect x="145" y="18" width="4" height="24" rx="2" /><rect x="160" y="20" width="4" height="20" rx="2" /><rect x="175" y="10" width="4" height="40" rx="2" /><rect x="190" y="25" width="4" height="10" rx="2" /><rect x="205" y="5" width="4" height="50" rx="2" /><rect x="220" y="15" width="4" height="30" rx="2" /><rect x="235" y="22" width="4" height="16" rx="2" /><rect x="250" y="8" width="4" height="44" rx="2" /><rect x="265" y="12" width="4" height="36" rx="2" /><rect x="280" y="25" width="4" height="10" rx="2" /><rect x="295" y="18" width="4" height="24" rx="2" /><rect x="310" y="5" width="4" height="50" rx="2" /><rect x="325" y="20" width="4" height="20" rx="2" /><rect x="340" y="10" width="4" height="40" rx="2" /><rect x="355" y="15" width="4" height="30" rx="2" /><rect x="370" y="22" width="4" height="16" rx="2" /><rect x="385" y="8" width="4" height="44" rx="2" />
+                                </g>
+                                <defs>
+                                    <linearGradient id="wave-gradient-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#0ea5e9" /><stop offset="100%" stop-color="#0d9488" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="playhead-line"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="showcase-card">
-                    <video autoplay loop muted playsinline preload="metadata">
-                        <source src="work-video-2.mp4" type="video/mp4">
-                    </video>
+
+                <!-- Track Card 2 -->
+                <div class="sound-track-row">
+                    <div class="sound-video-box">
+                        <div class="sound-card-logo">
+                            <svg viewBox="0 0 24 24"><path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.5A1.5 1.5 0 003 9v6a1.5 1.5 0 001.5 1.5h2.44l4.5 4.5c.944.945 2.56.276 2.56-1.06V4.06zM18.57 12a3.75 3.75 0 00-2.195-3.411.75.75 0 10-.643 1.357A2.25 2.25 0 0117.07 12a2.25 2.25 0 01-1.338 2.054.75.75 0 10.642 1.356A3.75 3.75 0 0018.57 12zM21 12a7.46 7.46 0 00-4.012-6.645.75.75 0 10-.732 1.314A5.961 5.961 0 0119.5 12a5.961 5.961 0 01-3.244 5.331.75.75 0 10.732 1.314A7.46 7.46 0 0021 12z"/></svg>
+                        </div>
+                        <video class="sync-video" loop muted playsinline preload="metadata">
+                            <source src="sound-design-2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="waveform-box-wrapper">
+                        <div class="waveform-timeline-container">
+                            <svg class="waveform-svg-mock" viewBox="0 0 400 60" preserveAspectRatio="none">
+                                <g fill="url(#wave-gradient-2)" opacity="0.85">
+                                    <rect x="10" y="15" width="4" height="30" rx="2" /><rect x="25" y="22" width="4" height="16" rx="2" /><rect x="40" y="8" width="4" height="44" rx="2" /><rect x="55" y="5" width="4" height="50" rx="2" /><rect x="70" y="20" width="4" height="20" rx="2" /><rect x="85" y="12" width="4" height="36" rx="2" /><rect x="100" y="25" width="4" height="10" rx="2" /><rect x="115" y="18" width="4" height="24" rx="2" /><rect x="130" y="10" width="4" height="40" rx="2" /><rect x="145" y="5" width="4" height="50" rx="2" /><rect x="160" y="15" width="4" height="30" rx="2" /><rect x="175" y="22" width="4" height="16" rx="2" /><rect x="190" y="8" width="4" height="44" rx="2" /><rect x="205" y="12" width="4" height="36" rx="2" /><rect x="220" y="20" width="4" height="20" rx="2" /><rect x="235" y="25" width="4" height="10" rx="2" /><rect x="250" y="5" width="4" height="50" rx="2" /><rect x="265" y="18" width="4" height="24" rx="2" /><rect x="280" y="10" width="4" height="40" rx="2" /><rect x="295" y="15" width="4" height="30" rx="2" /><rect x="310" y="22" width="4" height="16" rx="2" /><rect x="325" y="8" width="4" height="44" rx="2" /><rect x="340" y="12" width="4" height="36" rx="2" /><rect x="355" y="25" width="4" height="10" rx="2" /><rect x="370" y="5" width="4" height="50" rx="2" /><rect x="385" y="20" width="4" height="20" rx="2" />
+                                </g>
+                                <defs>
+                                    <linearGradient id="wave-gradient-2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#ec4899" /><stop offset="100%" stop-color="#8b5cf6" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="playhead-line"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="showcase-card">
-                    <video autoplay loop muted playsinline preload="metadata">
-                        <source src="work-video-3.mp4" type="video/mp4">
-                    </video>
+
+                <!-- Track Card 3 -->
+                <div class="sound-track-row">
+                    <div class="sound-video-box">
+                        <div class="sound-card-logo">
+                            <svg viewBox="0 0 24 24"><path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.5A1.5 1.5 0 003 9v6a1.5 1.5 0 001.5 1.5h2.44l4.5 4.5c.944.945 2.56.276 2.56-1.06V4.06zM18.57 12a3.75 3.75 0 00-2.195-3.411.75.75 0 10-.643 1.357A2.25 2.25 0 0117.07 12a2.25 2.25 0 01-1.338 2.054.75.75 0 10.642 1.356A3.75 3.75 0 0018.57 12zM21 12a7.46 7.46 0 00-4.012-6.645.75.75 0 10-.732 1.314A5.961 5.961 0 0119.5 12a5.961 5.961 0 01-3.244 5.331.75.75 0 10.732 1.314A7.46 7.46 0 0021 12z"/></svg>
+                        </div>
+                        <video class="sync-video" loop muted playsinline preload="metadata">
+                            <source src="sound-design-3.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="waveform-box-wrapper">
+                        <div class="waveform-timeline-container">
+                            <svg class="waveform-svg-mock" viewBox="0 0 400 60" preserveAspectRatio="none">
+                                <g fill="url(#wave-gradient-3)" opacity="0.85">
+                                    <rect x="10" y="5" width="4" height="50" rx="2" /><rect x="25" y="15" width="4" height="30" rx="2" /><rect x="40" y="20" width="4" height="20" rx="2" /><rect x="55" y="10" width="4" height="40" rx="2" /><rect x="70" y="25" width="4" height="10" rx="2" /><rect x="85" y="18" width="4" height="24" rx="2" /><rect x="100" y="5" width="4" height="50" rx="2" /><rect x="115" y="12" width="4" height="36" rx="2" /><rect x="130" y="22" width="4" height="16" rx="2" /><rect x="145" y="8" width="4" height="44" rx="2" /><rect x="160" y="15" width="4" height="30" rx="2" /><rect x="175" y="25" width="4" height="10" rx="2" /><rect x="190" y="5" width="4" height="50" rx="2" /><rect x="205" y="20" width="4" height="20" rx="2" /><rect x="220" y="10" width="4" height="40" rx="2" /><rect x="235" y="12" width="4" height="36" rx="2" /><rect x="250" y="25" width="4" height="10" rx="2" /><rect x="265" y="18" width="4" height="24" rx="2" /><rect x="280" y="5" width="4" height="50" rx="2" /><rect x="295" y="15" width="4" height="30" rx="2" /><rect x="310" y="22" width="4" height="16" rx="2" /><rect x="325" y="8" width="4" height="44" rx="2" /><rect x="340" y="20" width="4" height="20" rx="2" /><rect x="355" y="10" width="4" height="40" rx="2" /><rect x="370" y="12" width="4" height="36" rx="2" /><rect x="385" y="25" width="4" height="10" rx="2" />
+                                </g>
+                                <defs>
+                                    <linearGradient id="wave-gradient-3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#3b82f6" /><stop offset="100%" stop-color="#10b981" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="playhead-line"></div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
-            <!-- CATEGORY 4: REELS & VERTICAL CONTENT -->
+            <!-- CATEGORY 3: REELS & VERTICAL CONTENT -->
             <h2 class="category-heading">Reel Edits & Engagement Shorts</h2>
             <div class="reel-grid">
                 <div class="reel-card">
@@ -698,30 +845,59 @@
                 </div>
             </div>
 
-        </div> <!-- /container -->
-    </div> <!-- /portfolio-section -->
+        </div>
+    </div>
 
-    <!-- JAVASCRIPT TO HANDLE PREMIUM SCROLL TRIGGER AND TIMING STAGGER -->
+    <!-- JAVASCRIPT SYSTEM -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            
+            // --- 1. DYNAMIC REEL & STACK HOVER PLAYBACK MECHANICS ---
+            const soundRows = document.querySelectorAll(".sound-track-row");
+            
+            soundRows.forEach(row => {
+                const video = row.querySelector(".sync-video");
+                const playhead = row.querySelector(".playhead-line");
+                
+                if (video && playhead) {
+                    // Precise horizontal timeline percentage calculator
+                    video.addEventListener("timeupdate", () => {
+                        if (video.duration) {
+                            const percentage = (video.currentTime / video.duration) * 100;
+                            playhead.style.transform = `translateX(${percentage}%)`;
+                        }
+                    });
+
+                    // Instantly resets view line cleanly when loops snap back
+                    video.addEventListener("seeked", () => {
+                        if (video.currentTime === 0) {
+                            playhead.style.transform = `translateX(0%)`;
+                        }
+                    });
+
+                    // Playback configurations on focus hover states
+                    row.addEventListener("mouseenter", () => video.play());
+                    row.addEventListener("mouseleave", () => video.pause());
+                }
+            });
+
+            // --- 2. UNDERLINE ANIMATION OBSERVER ---
             const badgesSection = document.getElementById("badges-section");
             const badgeItems = document.querySelectorAll(".badge-item");
 
             const observerOptions = {
-                root: null, // monitors viewport
-                threshold: 0.2 // fires when 20% of the element reveals
+                root: null,
+                threshold: 0.2
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Loop through all items and apply dynamic staggered delays
                         badgeItems.forEach((item, index) => {
                             setTimeout(() => {
                                 item.classList.add("animate-underline");
-                            }, index * 250); // 250ms gap between each card line animation
+                            }, index * 250);
                         });
-                        // Stop observing once the animation triggers
                         observer.unobserve(entry.target);
                     }
                 });
