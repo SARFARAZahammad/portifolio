@@ -434,6 +434,8 @@
             border: 1px solid var(--glass-border);
             padding: 20px;
             border-radius: 24px;
+            position: relative;
+            cursor: pointer;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
         }
 
@@ -475,6 +477,56 @@
             width: 18px;
             height: 18px;
             fill: #fff;
+        }
+
+        /* --- DYNAMIC CONDITIONAL CTA OVERLAY --- */
+        .audio-cta-badge {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            background: rgba(7, 13, 14, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            color: #ffffff;
+            z-index: 12;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s;
+        }
+
+        /* Hide badges smoothly when row is hovered or playing active track */
+        .sound-track-row:hover .audio-cta-badge,
+        .sound-track-row.is-playing .audio-cta-badge {
+            opacity: 0;
+            transform: translateY(4px);
+        }
+
+        /* Standard hidden state */
+        .cta-desktop, .cta-mobile {
+            display: none;
+        }
+
+        /* Media Query: Device has a real cursor pointer (Laptops/Desktops) */
+        @media (hover: hover) {
+            .cta-desktop {
+                display: inline-flex;
+                align-items: center;
+            }
+        }
+
+        /* Media Query: Device doesn't have hover support (Mobiles/Tablets) */
+        @media (hover: none) {
+            .cta-mobile {
+                display: inline-flex;
+                align-items: center;
+            }
         }
 
         .waveform-box-wrapper {
@@ -689,11 +741,9 @@
         </div>
     </div>
 
-    <!-- MAIN PORTFOLIO SECTIONS CONTAINER -->
     <div class="portfolio-section" id="projects">
         <div class="container">
 
-            <!-- CATEGORY 1: UI ANIMATIONS -->
             <h2 class="category-heading">UI Animations</h2>
             <div class="showcase-grid">
                 <div class="showcase-card">
@@ -713,7 +763,6 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 2: CINEMATIC MOTION GRAPHICS -->
             <h2 class="category-heading">Cinematic Motion Graphics</h2>
             <div class="showcase-grid">
                 <div class="showcase-card">
@@ -733,12 +782,14 @@
                 </div>
             </div>
 
-            <!-- SOUND DESIGN SHOWCASE (VERTICALLY STACKED WITH INTERACTIVE AUDIO) -->
             <h2 class="category-heading">Sound Design Showcase</h2>
             <div class="sound-design-stack">
                 
-                <!-- Track Card 1 -->
                 <div class="sound-track-row">
+                    <div class="audio-cta-badge">
+                        <span class="cta-desktop">🔈 Hover for Sound</span>
+                        <span class="cta-mobile">🔊 Tap for Sound</span>
+                    </div>
                     <div class="sound-video-box">
                         <div class="sound-card-logo">
                             <svg viewBox="0 0 24 24"><path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.5A1.5 1.5 0 003 9v6a1.5 1.5 0 001.5 1.5h2.44l4.5 4.5c.944.945 2.56.276 2.56-1.06V4.06zM18.57 12a3.75 3.75 0 00-2.195-3.411.75.75 0 10-.643 1.357A2.25 2.25 0 0117.07 12a2.25 2.25 0 01-1.338 2.054.75.75 0 10.642 1.356A3.75 3.75 0 0018.57 12zM21 12a7.46 7.46 0 00-4.012-6.645.75.75 0 10-.732 1.314A5.961 5.961 0 0119.5 12a5.961 5.961 0 01-3.244 5.331.75.75 0 10.732 1.314A7.46 7.46 0 0021 12z"/></svg>
@@ -764,8 +815,11 @@
                     </div>
                 </div>
 
-                <!-- Track Card 2 -->
                 <div class="sound-track-row">
+                    <div class="audio-cta-badge">
+                        <span class="cta-desktop">🔈 Hover for Sound</span>
+                        <span class="cta-mobile">🔊 Tap for Sound</span>
+                    </div>
                     <div class="sound-video-box">
                         <div class="sound-card-logo">
                             <svg viewBox="0 0 24 24"><path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.5A1.5 1.5 0 003 9v6a1.5 1.5 0 001.5 1.5h2.44l4.5 4.5c.944.945 2.56.276 2.56-1.06V4.06zM18.57 12a3.75 3.75 0 00-2.195-3.411.75.75 0 10-.643 1.357A2.25 2.25 0 0117.07 12a2.25 2.25 0 01-1.338 2.054.75.75 0 10.642 1.356A3.75 3.75 0 0018.57 12zM21 12a7.46 7.46 0 00-4.012-6.645.75.75 0 10-.732 1.314A5.961 5.961 0 0119.5 12a5.961 5.961 0 01-3.244 5.331.75.75 0 10.732 1.314A7.46 7.46 0 0021 12z"/></svg>
@@ -791,8 +845,11 @@
                     </div>
                 </div>
 
-                <!-- Track Card 3 -->
                 <div class="sound-track-row">
+                    <div class="audio-cta-badge">
+                        <span class="cta-desktop">🔈 Hover for Sound</span>
+                        <span class="cta-mobile">🔊 Tap for Sound</span>
+                    </div>
                     <div class="sound-video-box">
                         <div class="sound-card-logo">
                             <svg viewBox="0 0 24 24"><path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.5A1.5 1.5 0 003 9v6a1.5 1.5 0 001.5 1.5h2.44l4.5 4.5c.944.945 2.56.276 2.56-1.06V4.06zM18.57 12a3.75 3.75 0 00-2.195-3.411.75.75 0 10-.643 1.357A2.25 2.25 0 0117.07 12a2.25 2.25 0 01-1.338 2.054.75.75 0 10.642 1.356A3.75 3.75 0 0018.57 12zM21 12a7.46 7.46 0 00-4.012-6.645.75.75 0 10-.732 1.314A5.961 5.961 0 0119.5 12a5.961 5.961 0 01-3.244 5.331.75.75 0 10.732 1.314A7.46 7.46 0 0021 12z"/></svg>
@@ -804,14 +861,9 @@
                     <div class="waveform-box-wrapper">
                         <div class="waveform-timeline-container">
                             <svg class="waveform-svg-mock" viewBox="0 0 400 60" preserveAspectRatio="none">
-                                <g fill="url(#wave-gradient-3)" opacity="0.85">
-                                    <rect x="10" y="5" width="4" height="50" rx="2" /><rect x="25" y="15" width="4" height="30" rx="2" /><rect x="40" y="20" width="4" height="20" rx="2" /><rect x="55" y="10" width="4" height="40" rx="2" /><rect x="70" y="25" width="4" height="10" rx="2" /><rect x="85" y="18" width="4" height="24" rx="2" /><rect x="100" y="5" width="4" height="50" rx="2" /><rect x="115" y="12" width="4" height="36" rx="2" /><rect x="130" y="22" width="4" height="16" rx="2" /><rect x="145" y="8" width="4" height="44" rx="2" /><rect x="160" y="15" width="4" height="30" rx="2" /><rect x="175" y="25" width="4" height="10" rx="2" /><rect x="190" y="5" width="4" height="50" rx="2" /><rect x="205" y="20" width="4" height="20" rx="2" /><rect x="220" y="10" width="4" height="40" rx="2" /><rect x="235" y="12" width="4" height="36" rx="2" /><rect x="250" y="25" width="4" height="10" rx="2" /><rect x="265" y="18" width="4" height="24" rx="2" /><rect x="280" y="5" width="4" height="50" rx="2" /><rect x="295" y="15" width="4" height="30" rx="2" /><rect x="310" y="22" width="4" height="16" rx="2" /><rect x="325" y="8" width="4" height="44" rx="2" /><rect x="340" y="20" width="4" height="20" rx="2" /><rect x="355" y="10" width="4" height="40" rx="2" /><rect x="370" y="12" width="4" height="36" rx="2" /><rect x="385" y="25" width="4" height="10" rx="2" />
+                                <g fill="url(#wave-gradient-1)" opacity="0.85">
+                                    <rect x="10" y="20" width="4" height="20" rx="2" /><rect x="25" y="10" width="4" height="40" rx="2" /><rect x="40" y="5" width="4" height="50" rx="2" /><rect x="55" y="15" width="4" height="30" rx="2" /><rect x="70" y="22" width="4" height="16" rx="2" /><rect x="85" y="8" width="4" height="44" rx="2" /><rect x="100" y="12" width="4" height="36" rx="2" /><rect x="115" y="25" width="4" height="10" rx="2" /><rect x="130" y="5" width="4" height="50" rx="2" />
                                 </g>
-                                <defs>
-                                    <linearGradient id="wave-gradient-3" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="#3b82f6" /><stop offset="100%" stop-color="#10b981" />
-                                    </linearGradient>
-                                </defs>
                             </svg>
                             <div class="playhead-line"></div>
                         </div>
@@ -819,106 +871,72 @@
                 </div>
 
             </div>
-
-            <!-- CATEGORY 3: REELS & VERTICAL CONTENT -->
-            <h2 class="category-heading">Reel Edits & Engagement Shorts</h2>
-            <div class="reel-grid">
-                <div class="reel-card">
-                    <video autoplay loop muted playsinline preload="metadata">
-                        <source src="oil.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="reel-card">
-                    <video autoplay loop muted playsinline preload="metadata">
-                        <source src="newf.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="reel-card">
-                    <video autoplay loop muted playsinline preload="metadata">
-                        <source src="reel.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="reel-card">
-                    <video autoplay loop muted playsinline preload="metadata">
-                        <source src="reel-video-4.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-
         </div>
     </div>
 
-    <!-- JAVASCRIPT SYSTEM -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        const soundRows = document.querySelectorAll(".sound-track-row");
+
+        soundRows.forEach(row => {
+            const video = row.querySelector(".sync-video");
+            const playhead = row.querySelector(".playhead-line");
             
-            // --- 1. DYNAMIC REEL & STACK HOVER PLAYBACK & AUDIO MECHANICS ---
-            const soundRows = document.querySelectorAll(".sound-track-row");
-            
-            soundRows.forEach(row => {
-                const video = row.querySelector(".sync-video");
-                const playhead = row.querySelector(".playhead-line");
-                
-                if (video && playhead) {
-                    // Precise horizontal timeline percentage calculator
-                    video.addEventListener("timeupdate", () => {
-                        if (video.duration) {
-                            const percentage = (video.currentTime / video.duration) * 100;
-                            playhead.style.transform = `translateX(${percentage}%)`;
-                        }
-                    });
+            if (video && playhead) {
+                // Ensure audio track initializes completely silent to pass browser checks
+                video.muted = true;
 
-                    // Instantly resets view line cleanly when loops snap back
-                    video.addEventListener("seeked", () => {
-                        if (video.currentTime === 0) {
-                            playhead.style.transform = `translateX(0%)`;
-                        }
-                    });
-
-                    // Playback configurations and unmuting on focus hover states
-                    row.addEventListener("mouseenter", () => {
-                        video.muted = false; // Unmute audio instantly on cursor entrance
-                        
-                        // Catching potential browser engagement block rules safely
-                        video.play().catch(error => {
-                            console.log("Audio channels waiting for user viewport interaction gesture.", error);
-                        });
-                    });
-                    
-                    row.addEventListener("mouseleave", () => {
-                        video.pause();
-                        video.muted = true; // Safety override to clear channels instantly
-                    });
-                }
-            });
-
-            // --- 2. UNDERLINE ANIMATION OBSERVER ---
-            const badgesSection = document.getElementById("badges-section");
-            const badgeItems = document.querySelectorAll(".badge-item");
-
-            const observerOptions = {
-                root: null,
-                threshold: 0.2
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        badgeItems.forEach((item, index) => {
-                            setTimeout(() => {
-                                item.classList.add("animate-underline");
-                            }, index * 250);
-                        });
-                        observer.unobserve(entry.target);
+                // Sync the playhead custom UI line with actual video timeframes
+                video.addEventListener("timeupdate", () => {
+                    if (video.duration) {
+                        const percentage = (video.currentTime / video.duration) * 100;
+                        playhead.style.transform = `translateX(${percentage}%)`;
                     }
                 });
-            }, observerOptions);
 
-            if (badgesSection) {
-                observer.observe(badgesSection);
+                video.addEventListener("seeked", () => {
+                    if (video.currentTime === 0) {
+                        playhead.style.transform = `translateX(0%)`;
+                    }
+                });
+
+                // --- DESKTOP HOVER SYSTEM ---
+                row.addEventListener("mouseenter", () => {
+                    video.muted = false; // Enable audio feed safely on intent
+                    video.play().catch(err => console.log("Playback engine initialized...", err));
+                });
+                
+                row.addEventListener("mouseleave", () => {
+                    video.pause();
+                    video.muted = true; // Auto-mute card layout when focus shifts
+                });
+
+                // --- SMART MOBILE INTERACTION SYSTEM ---
+                row.addEventListener("click", (e) => {
+                    // Check if the screen environment uses touch handles (or media width rules fall below desktop thresholds)
+                    if (window.matchMedia("(hover: none)").matches) {
+                        if (video.paused) {
+                            // Turn off active channels from other rows to prevent mixing tracks
+                            soundRows.forEach(otherRow => {
+                                const otherVideo = otherRow.querySelector(".sync-video");
+                                if (otherVideo && otherVideo !== video) {
+                                    otherVideo.pause();
+                                    otherVideo.muted = true;
+                                    otherRow.classList.remove("is-playing");
+                                }
+                            });
+
+                            video.muted = false;
+                            video.play();
+                            row.classList.add("is-playing"); // Toggle CSS overlay away
+                        } else {
+                            video.pause();
+                            video.muted = true;
+                            row.classList.remove("is-playing"); // Display overlay again
+                        }
+                    }
+                });
             }
         });
     </script>
-
 </body>
 </html>
