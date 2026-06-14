@@ -566,7 +566,8 @@
             border-radius: 2px;
             box-shadow: 0 0 12px var(--teal-bright);
             pointer-events: none;
-            will-change: left; /* Optimized for smooth left positioning rendering */
+            transform: translateX(0);
+            will-change: transform;
         }
 
         /* --- VERTICAL REELS GRID (9:16) --- */
@@ -831,7 +832,7 @@
                         <div class="waveform-timeline-container">
                             <svg class="waveform-svg-mock" viewBox="0 0 400 60" preserveAspectRatio="none">
                                 <g fill="url(#wave-gradient-2)" opacity="0.85">
-                                    <rect x="10" y="15" width="4" height="30" rx="2" /><rect x="25" y="22" width="4" height="16" rx="2" /><rect x="40" y="8" width="4" height="44" rx="2" /><rect x="55" y="5" width="4" height="50" rx="2" /><rect x="70" y="20" width="4" height="20" rx="2" /><rect x="85" y="12" width="4" height="36" rx="2" /><rect x="100" y="25" width="4" height="10" rx="2" /><rect x="115" y="18" width="4" height="24" rx="2" /><rect x="130" y="10" width="4" height="40" rx="2" /><rect x="145" y="5" width="4" height="50" rx="2" /><rect x="160" y="15" width="4" height="30" rx="2" /><rect x="175" y="22" width="4" height="16" rx="2" /><rect x="190" y="8" width="4" height="44" rx="2" /><rect x="205" y="12" width="4" height="36" rx="2" /><rect x="220" y="25" width="4" height="10" rx="2" /><rect x="235" y="5" width="4" height="50" rx="2" /><rect x="250" y="18" width="4" height="24" rx="2" /><rect x="265" y="20" width="4" height="20" rx="2" /><rect x="280" y="10" width="4" height="40" rx="2" /><rect x="295" y="25" width="4" height="10" rx="2" /><rect x="310" y="5" width="4" height="50" rx="2" /><rect x="325" y="15" width="4" height="30" rx="2" /><rect x="340" y="22" width="4" height="16" rx="2" /><rect x="355" y="8" width="4" height="44" rx="2" /><rect x="370" y="12" width="4" height="36" rx="2" /><rect x="385" y="25" width="4" height="10" rx="2" />
+                                    <rect x="10" y="15" width="4" height="30" rx="2" /><rect x="25" y="22" width="4" height="16" rx="2" /><rect x="40" y="8" width="4" height="44" rx="2" /><rect x="55" y="5" width="4" height="50" rx="2" /><rect x="70" y="20" width="4" height="20" rx="2" /><rect x="85" y="12" width="4" height="36" rx="2" /><rect x="100" y="25" width="4" height="10" rx="2" /><rect x="115" y="18" width="4" height="24" rx="2" /><rect x="130" y="10" width="4" height="40" rx="2" /><rect x="145" y="5" width="4" height="50" rx="2" /><rect x="160" y="15" width="4" height="30" rx="2" /><rect x="175" y="22" width="4" height="16" rx="2" /><rect x="190" y="8" width="4" height="44" rx="2" /><rect x="205" y="12" width="4" height="36" rx="2" /><rect x="220" y="25" width="4" height="10" rx="2" /><rect x="235" y="18" width="4" height="24" rx="2" /><rect x="250" y="5" width="4" height="50" rx="2" /><rect x="265" y="20" width="4" height="20" rx="2" /><rect x="280" y="10" width="4" height="40" rx="2" /><rect x="295" y="15" width="4" height="30" rx="2" /><rect x="310" y="22" width="4" height="16" rx="2" /><rect x="325" y="8" width="4" height="44" rx="2" />
                                 </g>
                                 <defs>
                                     <linearGradient id="wave-gradient-2" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -844,68 +845,57 @@
                     </div>
                 </div>
 
+            </div> <h2 class="category-heading">YouTube Shorts & Reels</h2>
+            <div class="reel-grid">
+                <div class="reel-card">
+                    <video autoplay loop muted playsinline preload="metadata">
+                        <source src="newf.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="reel-card">
+                    <video autoplay loop muted playsinline preload="metadata">
+                        <source src="oil.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="reel-card">
+                    <video autoplay loop muted playsinline preload="metadata">
+                        <source src="reel.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="reel-card">
+                    <video autoplay loop muted playsinline preload="metadata">
+                        <source src="reel4.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <script>
-        document.querySelectorAll('.sound-track-row').forEach(row => {
-            const video = row.querySelector('.sync-video');
-            const playhead = row.querySelector('.playhead-line');
-            let playheadAnimation;
+        </div> </div> <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const badgesSection = document.querySelector('#badges-section');
+            const badgeItems = document.querySelectorAll('.badge-item');
 
-            // Updates progress indicator bar seamlessly relative to streaming content duration
-            function updatePlayhead() {
-                if (!video.paused && video.duration) {
-                    const progressPercentage = (video.currentTime / video.duration) * 100;
-                    if (playhead) {
-                        playhead.style.left = progressPercentage + '%';
+            const observerOptions = {
+                threshold: 0.2 // Triggers when 20% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Animates each item one after the other (staggered effect)
+                        badgeItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animate-underline');
+                            }, index * 200); 
+                        });
+                        // Stops looking once the animation runs
+                        observer.unobserve(entry.target);
                     }
-                    playheadAnimation = requestAnimationFrame(updatePlayhead);
-                }
+                });
+            }, observerOptions);
+
+            if (badgesSection) {
+                observer.observe(badgesSection);
             }
-
-            // --- DESKTOP HANDLERS: Continuous Hover Management ---
-            row.addEventListener('mouseenter', () => {
-                row.classList.add('is-playing');
-                video.muted = false; 
-                
-                video.play()
-                    .then(() => {
-                        updatePlayhead();
-                    })
-                    .catch(error => {
-                        console.log("Autoplay context initialization restricted:", error);
-                    });
-            });
-
-            row.addEventListener('mouseleave', () => {
-                row.classList.remove('is-playing');
-                video.pause();
-                cancelAnimationFrame(playheadAnimation);
-            });
-
-            // --- MOBILE SYSTEM HANDLERS: Responsive Audio Alternation ---
-            row.addEventListener('click', (e) => {
-                // Terminate interaction loop if native cursor architecture is present
-                if (window.matchMedia("(hover: hover)").matches) return; 
-
-                if (video.paused) {
-                    // Suppress and clear overlapping background audio systems across rows
-                    document.querySelectorAll('.sync-video').forEach(v => v.pause());
-                    document.querySelectorAll('.sound-track-row').forEach(r => r.classList.remove('is-playing'));
-
-                    row.classList.add('is-playing');
-                    video.muted = false; 
-                    video.play().then(() => {
-                        updatePlayhead();
-                    });
-                } else {
-                    row.classList.remove('is-playing');
-                    video.pause();
-                    cancelAnimationFrame(playheadAnimation);
-                }
-            });
         });
     </script>
 </body>
