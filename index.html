@@ -242,7 +242,7 @@
             padding-bottom: 6px;
         }
 
-        /* --- UNDERLINE EFFECT --- */
+        /* --- UNDERLINE EFFECT (FIXED) --- */
         .badge-item p::after {
             content: '';
             position: absolute;
@@ -250,9 +250,9 @@
             bottom: 0;
             width: 0;
             height: 3px;
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: var(--teal-bright);
             border-radius: 2px;
-            transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .badge-item.animate-underline p::after {
@@ -754,7 +754,7 @@
                 <div class="showcase-card">
                     <video autoplay loop muted playsinline preload="metadata">
                         <source src="Uiporfolio.mp4" type="video/mp4">
-                    </video>                
+                    </video>                    
                 </div>
                 <div class="showcase-card">
                     <video autoplay loop muted playsinline preload="metadata">
@@ -832,11 +832,11 @@
                         <div class="waveform-timeline-container">
                             <svg class="waveform-svg-mock" viewBox="0 0 400 60" preserveAspectRatio="none">
                                 <g fill="url(#wave-gradient-2)" opacity="0.85">
-                                    <rect x="10" y="15" width="4" height="30" rx="2" /><rect x="25" y="22" width="4" height="16" rx="2" /><rect x="40" y="8" width="4" height="44" rx="2" /><rect x="55" y="5" width="4" height="50" rx="2" /><rect x="70" y="20" width="4" height="20" rx="2" /><rect x="85" y="12" width="4" height="36" rx="2" /><rect x="100" y="25" width="4" height="10" rx="2" /><rect x="115" y="18" width="4" height="24" rx="2" /><rect x="130" y="10" width="4" height="40" rx="2" /><rect x="145" y="5" width="4" height="50" rx="2" /><rect x="160" y="15" width="4" height="30" rx="2" /><rect x="175" y="22" width="4" height="16" rx="2" /><rect x="190" y="8" width="4" height="44" rx="2" /><rect x="205" y="12" width="4" height="36" rx="2" /><rect x="220" y="20" width="4" height="20" rx="2" /><rect x="235" y="25" width="4" height="10" rx="2" /><rect x="250" y="5" width="4" height="50" rx="2" /><rect x="265" y="18" width="4" height="24" rx="2" /><rect x="280" y="10" width="4" height="40" rx="2" /><rect x="295" y="15" width="4" height="30" rx="2" /><rect x="310" y="22" width="4" height="16" rx="2" /><rect x="325" y="8" width="4" height="44" rx="2" /><rect x="340" y="12" width="4" height="36" rx="2" /><rect x="355" y="25" width="4" height="10" rx="2" /><rect x="370" y="5" width="4" height="50" rx="2" /><rect x="385" y="20" width="4" height="20" rx="2" />
+                                    <rect x="10" y="15" width="4" height="30" rx="2" /><rect x="25" y="22" width="4" height="16" rx="2" /><rect x="40" y="8" width="4" height="44" rx="2" /><rect x="55" y="5" width="4" height="50" rx="2" /><rect x="70" y="20" width="4" height="20" rx="2" /><rect x="85" y="12" width="4" height="36" rx="2" /><rect x="100" y="25" width="4" height="10" rx="2" /><rect x="115" y="18" width="4" height="24" rx="2" /><rect x="130" y="10" width="4" height="40" rx="2" /><rect x="145" y="5" width="4" height="50" rx="2" /><rect x="160" y="15" width="4" height="30" rx="2" /><rect x="175" y="22" width="4" height="16" rx="2" /><rect x="190" y="8" width="4" height="44" rx="2" /><rect x="205" y="12" width="4" height="36" rx="2" /><rect x="220" y="25" width="4" height="10" rx="2" /><rect x="235" y="18" width="4" height="24" rx="2" /><rect x="250" y="5" width="4" height="50" rx="2" /><rect x="265" y="20" width="4" height="20" rx="2" /><rect x="280" y="10" width="4" height="40" rx="2" /><rect x="295" y="15" width="4" height="30" rx="2" /><rect x="310" y="22" width="4" height="16" rx="2" /><rect x="325" y="8" width="4" height="44" rx="2" />
                                 </g>
                                 <defs>
                                     <linearGradient id="wave-gradient-2" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="#ec4899" /><stop offset="100%" stop-color="#8b5cf6" />
+                                        <stop offset="0%" stop-color="#0ea5e9" /><stop offset="100%" stop-color="#0d9488" />
                                     </linearGradient>
                                 </defs>
                             </svg>
@@ -845,96 +845,56 @@
                     </div>
                 </div>
 
-                <div class="sound-track-row">
-                    <div class="audio-cta-badge">
-                        <span class="cta-desktop">🔈 Hover for Sound</span>
-                        <span class="cta-mobile">🔊 Tap for Sound</span>
-                    </div>
-                    <div class="sound-video-box">
-                        <div class="sound-card-logo">
-                            <svg viewBox="0 0 24 24"><path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.5A1.5 1.5 0 003 9v6a1.5 1.5 0 001.5 1.5h2.44l4.5 4.5c.944.945 2.56.276 2.56-1.06V4.06zM18.57 12a3.75 3.75 0 00-2.195-3.411.75.75 0 10-.643 1.357A2.25 2.25 0 0117.07 12a2.25 2.25 0 01-1.338 2.054.75.75 0 10.642 1.356A3.75 3.75 0 0018.57 12zM21 12a7.46 7.46 0 00-4.012-6.645.75.75 0 10-.732 1.314A5.961 5.961 0 0119.5 12a5.961 5.961 0 01-3.244 5.331.75.75 0 10.732 1.314A7.46 7.46 0 0021 12z"/></svg>
-                        </div>
-                        <video class="sync-video" loop muted playsinline preload="metadata">
-                            <source src="sound-design-3.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="waveform-box-wrapper">
-                        <div class="waveform-timeline-container">
-                            <svg class="waveform-svg-mock" viewBox="0 0 400 60" preserveAspectRatio="none">
-                                <g fill="url(#wave-gradient-1)" opacity="0.85">
-                                    <rect x="10" y="20" width="4" height="20" rx="2" /><rect x="25" y="10" width="4" height="40" rx="2" /><rect x="40" y="5" width="4" height="50" rx="2" /><rect x="55" y="15" width="4" height="30" rx="2" /><rect x="70" y="22" width="4" height="16" rx="2" /><rect x="85" y="8" width="4" height="44" rx="2" /><rect x="100" y="12" width="4" height="36" rx="2" /><rect x="115" y="25" width="4" height="10" rx="2" /><rect x="130" y="5" width="4" height="50" rx="2" />
-                                </g>
-                            </svg>
-                            <div class="playhead-line"></div>
-                        </div>
-                    </div>
+            </div> <h2 class="category-heading">YouTube Shorts & Reels</h2>
+            <div class="reel-grid">
+                <div class="reel-card">
+                    <video autoplay loop muted playsinline preload="metadata">
+                        <source src="reel1.mp4" type="video/mp4">
+                    </video>
                 </div>
-
+                <div class="reel-card">
+                    <video autoplay loop muted playsinline preload="metadata">
+                        <source src="reel2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="reel-card">
+                    <video autoplay loop muted playsinline preload="metadata">
+                        <source src="reel3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="reel-card">
+                    <video autoplay loop muted playsinline preload="metadata">
+                        <source src="reel4.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <script>
-        const soundRows = document.querySelectorAll(".sound-track-row");
+        </div> </div> <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const badgesSection = document.querySelector('#badges-section');
+            const badgeItems = document.querySelectorAll('.badge-item');
 
-        soundRows.forEach(row => {
-            const video = row.querySelector(".sync-video");
-            const playhead = row.querySelector(".playhead-line");
-            
-            if (video && playhead) {
-                // Ensure audio track initializes completely silent to pass browser checks
-                video.muted = true;
+            const observerOptions = {
+                threshold: 0.2 // Triggers when 20% of the section is visible
+            };
 
-                // Sync the playhead custom UI line with actual video timeframes
-                video.addEventListener("timeupdate", () => {
-                    if (video.duration) {
-                        const percentage = (video.currentTime / video.duration) * 100;
-                        playhead.style.transform = `translateX(${percentage}%)`;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Animates each item one after the other (staggered effect)
+                        badgeItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animate-underline');
+                            }, index * 200); 
+                        });
+                        // Stops looking once the animation runs
+                        observer.unobserve(entry.target);
                     }
                 });
+            }, observerOptions);
 
-                video.addEventListener("seeked", () => {
-                    if (video.currentTime === 0) {
-                        playhead.style.transform = `translateX(0%)`;
-                    }
-                });
-
-                // --- DESKTOP HOVER SYSTEM ---
-                row.addEventListener("mouseenter", () => {
-                    video.muted = false; // Enable audio feed safely on intent
-                    video.play().catch(err => console.log("Playback engine initialized...", err));
-                });
-                
-                row.addEventListener("mouseleave", () => {
-                    video.pause();
-                    video.muted = true; // Auto-mute card layout when focus shifts
-                });
-
-                // --- SMART MOBILE INTERACTION SYSTEM ---
-                row.addEventListener("click", (e) => {
-                    // Check if the screen environment uses touch handles (or media width rules fall below desktop thresholds)
-                    if (window.matchMedia("(hover: none)").matches) {
-                        if (video.paused) {
-                            // Turn off active channels from other rows to prevent mixing tracks
-                            soundRows.forEach(otherRow => {
-                                const otherVideo = otherRow.querySelector(".sync-video");
-                                if (otherVideo && otherVideo !== video) {
-                                    otherVideo.pause();
-                                    otherVideo.muted = true;
-                                    otherRow.classList.remove("is-playing");
-                                }
-                            });
-
-                            video.muted = false;
-                            video.play();
-                            row.classList.add("is-playing"); // Toggle CSS overlay away
-                        } else {
-                            video.pause();
-                            video.muted = true;
-                            row.classList.remove("is-playing"); // Display overlay again
-                        }
-                    }
-                });
+            if (badgesSection) {
+                observer.observe(badgesSection);
             }
         });
     </script>
