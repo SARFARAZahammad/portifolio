@@ -7,7 +7,451 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* --- CSS RESET & VARIABLES --- */
+        /* --- CSS RESET & VARIABLES --- */<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarfaraz | Creative Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',-apple-system,sans-serif}
+        :root{--bg-dark:#070d0e;--teal-bright:#0ea5e9;--teal-gradient-start:#042f2e;--teal-gradient-mid:#115e59;--teal-gradient-end:#0d9488;--text-muted:#94a3b8;--glass-card:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.08);--whatsapp-green:#25D366}
+        html{scroll-behavior:smooth}
+        body{background-color:var(--bg-dark);color:#fff;overflow-x:hidden;padding-bottom:100px}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+        .category-heading{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;margin:80px 0 24px 0;letter-spacing:-0.5px;position:relative;background:linear-gradient(90deg,#ffffff 0%,rgba(14,165,233,0.9) 60%,#ffffff 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:headingShimmer 6s linear infinite}
+        @keyframes headingShimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+        .hero-outer{background:linear-gradient(135deg,#021412 0%,#115e59 50%,#0d9488 100%);border-bottom-left-radius:40px;border-bottom-right-radius:40px;position:relative;overflow:hidden;padding-bottom:80px}
+        .hero-outer::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.1) 1px,transparent 1px);background-size:24px 24px;opacity:0.3;pointer-events:none}
+        nav{display:flex;justify-content:space-between;align-items:center;padding:30px 0}
+        .logo{font-weight:700;font-size:1.25rem;letter-spacing:-0.5px}
+        .nav-links{display:flex;gap:30px;list-style:none}
+        .nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.9rem;font-weight:400;transition:color 0.3s}
+        .nav-links a:hover{color:#fff}
+        .nav-actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+        .btn-pill{background:#fff;color:#000;padding:10px 24px;border-radius:30px;text-decoration:none;font-weight:500;font-size:0.9rem;display:inline-flex;align-items:center;gap:12px;transition:transform 0.3s ease,box-shadow 0.3s ease}
+        .btn-pill:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(13,148,136,0.3)}
+        .btn-pill .arrow-circle{background:var(--teal-gradient-mid);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.8rem}
+        .btn-whatsapp{background:var(--whatsapp-green);color:#fff;padding:10px 24px;border-radius:30px;text-decoration:none;font-weight:500;font-size:0.9rem;display:inline-flex;align-items:center;gap:10px;transition:transform 0.3s ease,box-shadow 0.3s ease}
+        .btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(37,211,102,0.3)}
+        .btn-whatsapp svg{width:18px;height:18px;fill:currentColor}
+        .split-actions{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+        .hero-grid{display:grid;grid-template-columns:1.2fr 0.8fr;align-items:center;padding-top:60px;position:relative;z-index:2}
+        .hero-left h3{font-size:1.1rem;font-weight:400;color:rgba(255,255,255,0.8);margin-bottom:10px}
+        .hero-left h1{font-size:clamp(3.5rem,6vw,5.5rem);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:40px}
+        .hero-right-text{max-width:320px;margin-left:auto}
+        .hero-right-text h2{font-size:1.5rem;font-weight:600;line-height:1.4;margin-bottom:15px}
+        .hero-right-text p{font-size:0.9rem;color:rgba(255,255,255,0.7);line-height:1.6}
+        .hero-badges-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:80px;border-top:1px solid rgba(255,255,255,0.15);padding-top:25px}
+        .badge-item span{font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.6);display:block;margin-bottom:4px}
+        .badge-item p{font-size:0.9rem;font-weight:500;display:inline-block;position:relative;padding-bottom:6px}
+        .badge-item p::after{content:'';position:absolute;left:0;bottom:0;width:0;height:3px;background-color:rgba(0,0,0,0.4);border-radius:2px;transition:width 0.6s cubic-bezier(0.25,1,0.5,1)}
+        .badge-item.animate-underline p::after{width:100%}
+        .brand-ticker-section{padding:40px 0;background:var(--bg-dark)}
+        .ticker-wrapper{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:30px;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:40px}
+        .ticker-title{font-size:0.85rem;color:var(--text-muted);max-width:140px;line-height:1.4}
+        .brand-logos{display:flex;align-items:center;gap:50px;flex-wrap:wrap}
+        .logo-item{display:flex;align-items:center;gap:8px;font-weight:600;color:rgba(255,255,255,0.8);font-size:1.05rem}
+        .logo-item svg{width:18px;height:18px;fill:currentColor}
+        .split-section{padding:80px 0 40px 0}
+        .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:flex-start}
+        .split-left .section-tag{color:#0ea5e9;font-size:0.95rem;font-weight:600;margin-bottom:15px;display:block}
+        .split-left h2{font-size:clamp(2rem,4vw,2.75rem);font-weight:700;line-height:1.2;letter-spacing:-1px}
+        .split-right{padding-top:15px}
+        .split-right h3{font-size:1.35rem;font-weight:400;line-height:1.5;margin-bottom:30px;color:#f1f5f9}
+        .split-right-footer{display:flex;justify-content:space-between;align-items:center}
+        .split-right-footer p{font-size:0.85rem;color:var(--text-muted);line-height:1.5}
+        .btn-orange{background:#ff5722;color:#fff;padding:12px 26px;border-radius:30px;text-decoration:none;font-weight:500;font-size:0.9rem;display:inline-flex;align-items:center;gap:12px;transition:opacity 0.3s}
+        .btn-orange:hover{opacity:0.9}
+        .btn-orange .arrow-circle{background:rgba(255,255,255,0.2);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+        /* ===== PORTFOLIO SECTION — MOVING PREMIUM GRADIENT ===== */
+        .portfolio-section{
+            padding:40px 0;
+            position:relative;
+            overflow:hidden;
+            isolation:isolate;
+        }
+        /* Slowly spinning conic gradient — the main ambient layer */
+        .portfolio-section::before{
+            content:'';
+            position:absolute;
+            top:-50%;
+            left:-50%;
+            width:200%;
+            height:200%;
+            background:conic-gradient(
+                from 0deg at 30% 40%,
+                #042f2e 0deg,
+                #0d9488 60deg,
+                #0ea5e9 100deg,
+                #6366f1 140deg,
+                #8b5cf6 180deg,
+                #0d9488 220deg,
+                #042f2e 280deg,
+                #0ea5e9 320deg,
+                #042f2e 360deg
+            );
+            animation:gradSpin 22s linear infinite;
+            opacity:0.14;
+            z-index:-2;
+            filter:blur(90px);
+        }
+        /* Drifting radial orbs — second depth layer */
+        .portfolio-section::after{
+            content:'';
+            position:absolute;
+            inset:0;
+            background:
+                radial-gradient(ellipse 55% 45% at 15% 20%, rgba(14,165,233,0.13) 0%, transparent 65%),
+                radial-gradient(ellipse 45% 55% at 88% 80%, rgba(13,148,136,0.11) 0%, transparent 65%),
+                radial-gradient(ellipse 38% 38% at 55% 50%, rgba(99,102,241,0.08) 0%, transparent 65%);
+            animation:orbDrift 14s ease-in-out infinite alternate;
+            z-index:-1;
+            pointer-events:none;
+        }
+        @keyframes gradSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+        @keyframes orbDrift{
+            0%  {opacity:0.7;transform:translate(0,0)}
+            33% {opacity:1;transform:translate(30px,-20px)}
+            66% {opacity:0.8;transform:translate(-25px,40px)}
+            100%{opacity:0.95;transform:translate(50px,-10px)}
+        }
+        /* Sweeping shimmer line across the top edge */
+        .portfolio-gradient-shimmer{
+            position:absolute;
+            top:0;left:-100%;
+            width:60%;height:2px;
+            background:linear-gradient(90deg,transparent 0%,rgba(14,165,233,0.55) 30%,rgba(13,148,136,0.85) 50%,rgba(99,102,241,0.55) 70%,transparent 100%);
+            animation:shimmerLine 6s ease-in-out infinite;
+            z-index:1;
+            pointer-events:none;
+        }
+        @keyframes shimmerLine{0%{left:-100%;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:200%;opacity:0}}
+        /* Floating ambient orbs */
+        .portfolio-orb{position:absolute;border-radius:50%;pointer-events:none;z-index:-1;filter:blur(65px);animation:floatOrb var(--d,20s) ease-in-out infinite alternate}
+        .portfolio-orb-1{width:520px;height:520px;background:radial-gradient(circle,rgba(14,165,233,0.14) 0%,transparent 70%);top:4%;left:-8%;--d:24s}
+        .portfolio-orb-2{width:420px;height:420px;background:radial-gradient(circle,rgba(13,148,136,0.11) 0%,transparent 70%);bottom:8%;right:-4%;--d:18s;animation-delay:-6s}
+        .portfolio-orb-3{width:320px;height:320px;background:radial-gradient(circle,rgba(99,102,241,0.09) 0%,transparent 70%);top:42%;left:58%;--d:26s;animation-delay:-12s}
+        .portfolio-orb-4{width:360px;height:360px;background:radial-gradient(circle,rgba(139,92,246,0.07) 0%,transparent 70%);top:68%;left:18%;--d:20s;animation-delay:-8s}
+        @keyframes floatOrb{
+            0%  {transform:translate(0,0) scale(1)}
+            25% {transform:translate(45px,-35px) scale(1.06)}
+            50% {transform:translate(-25px,55px) scale(0.94)}
+            75% {transform:translate(65px,25px) scale(1.09)}
+            100%{transform:translate(-45px,-65px) scale(1)}
+        }
+        /* ===== END GRADIENT ADDITIONS ===== */
+
+        .showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:20px}
+        .showcase-card{background:var(--glass-card);border:1px solid var(--glass-border);border-radius:24px;overflow:hidden;aspect-ratio:16/9;position:relative;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),border-color 0.4s,box-shadow 0.4s}
+        .showcase-card:hover{transform:translateY(-8px);border-color:rgba(14,165,233,0.4);box-shadow:0 0 0 1px rgba(14,165,233,0.25),0 0 40px rgba(14,165,233,0.07),0 20px 60px rgba(0,0,0,0.4)}
+        .showcase-card img,.showcase-card video{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+        .showcase-card img{filter:grayscale(20%)}
+        .showcase-card:hover img,.showcase-card:hover video{transform:scale(1.03)}
+        .reel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:20px}
+        .reel-card{background:var(--glass-card);border:1px solid var(--glass-border);border-radius:24px;overflow:hidden;aspect-ratio:9/16;position:relative;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),border-color 0.4s,box-shadow 0.4s}
+        .reel-card:hover{transform:translateY(-8px);border-color:rgba(14,165,233,0.4);box-shadow:0 0 0 1px rgba(14,165,233,0.25),0 0 40px rgba(14,165,233,0.07),0 20px 60px rgba(0,0,0,0.4)}
+        .reel-card video{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+        .reel-card:hover video{transform:scale(1.03)}
+        .sound-showcase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-bottom:40px}
+        .sound-card{background:var(--glass-card);border:1px solid var(--glass-border);border-radius:28px;padding:24px;display:flex;flex-direction:column;gap:20px;backdrop-filter:blur(12px);transition:border-color 0.4s,transform 0.4s,box-shadow 0.4s}
+        .sound-card:hover{border-color:var(--teal-bright);transform:translateY(-4px);box-shadow:0 0 0 1px rgba(14,165,233,0.25),0 0 40px rgba(14,165,233,0.07),0 20px 60px rgba(0,0,0,0.4)}
+        .sound-video-container{width:100%;aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden;position:relative}
+        .sound-video-container video{width:100%;height:100%;object-fit:cover}
+        .sound-meta-container{display:flex;flex-direction:column;gap:16px}
+        .sound-info{display:flex;justify-content:space-between;align-items:center}
+        .sound-title-block h4{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px}
+        .sound-title-block p{font-size:0.8rem;color:var(--text-muted)}
+        .sound-controls{display:flex;align-items:center;gap:20px;background:rgba(255,255,255,0.02);padding:16px 20px;border-radius:16px;border:1px solid rgba(255,255,255,0.04)}
+        .play-btn{background:#fff;border:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform 0.2s,background-color 0.2s;flex-shrink:0}
+        .play-btn:hover{transform:scale(1.05);background:var(--teal-bright)}
+        .play-btn svg{width:16px;height:16px;fill:#000;transition:fill 0.2s}
+        .play-btn:hover svg{fill:#fff}
+        .waveform-container{position:relative;flex-grow:1;height:40px;cursor:pointer;display:flex;align-items:center}
+        .waveform-svg{width:100%;height:32px}
+        .wave-bg{fill:rgba(255,255,255,0.2)}
+        .wave-progress{fill:var(--teal-bright);clip-path:inset(0 100% 0 0);transition:clip-path 0.1s linear}
+        .sound-card-logo{position:absolute;top:16px;left:16px;background:rgba(7,13,14,0.7);padding:6px 12px;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(4px);z-index:10;color:var(--teal-bright)}
+
+        @media(max-width:1024px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero-right-text{margin-left:0;max-width:100%}.split-grid{grid-template-columns:1fr;gap:40px}.showcase-grid{grid-template-columns:repeat(2,1fr)}.reel-grid{grid-template-columns:repeat(2,1fr)}.sound-showcase-grid{grid-template-columns:1fr;gap:24px}}
+        @media(max-width:768px){.nav-links{display:none}.hero-badges-row{grid-template-columns:repeat(2,1fr);gap:24px}.showcase-grid{grid-template-columns:1fr}.brand-logos{gap:24px}.split-right-footer{flex-direction:column;align-items:flex-start;gap:20px}.nav-actions,.split-actions{align-items:flex-start}.portfolio-orb-1{width:300px;height:300px}.portfolio-orb-2{width:250px;height:250px}.portfolio-orb-3,.portfolio-orb-4{display:none}}
+        @media(max-width:600px){.reel-grid{grid-template-columns:1fr}}
+        @media(prefers-reduced-motion:reduce){.portfolio-section::before,.portfolio-section::after,.portfolio-gradient-shimmer,.portfolio-orb{animation:none}.category-heading{animation:none;background:none;-webkit-text-fill-color:#fff;color:#fff}}
+    </style>
+</head>
+<body>
+
+    <div class="hero-outer">
+        <div class="container">
+            <nav>
+                <div class="logo">Vision</div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="mailto:sarfaraz75010@gmail.com?subject=Video%20Editing%20Inquiry" class="btn-pill">
+                        Email ME <div class="arrow-circle">→</div>
+                    </a>
+                    <a href="https://wa.me/7501016646?text=Hi%20Sarfaraz,%20I'm%20interested%20in%20your%20video%20editing%20services!" target="_blank" class="btn-whatsapp">
+                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.528 1.981 14.063.957 11.43.957c-5.442 0-9.87 4.372-9.874 9.802-.001 1.73.463 3.42 1.345 4.927l-.997 3.641 3.743-.973zm11.567-7.423c-.302-.151-1.786-.881-2.062-.981-.277-.1-.478-.151-.68.151-.202.302-.782.981-.96 1.182-.177.201-.355.226-.657.076-.301-.151-1.274-.47-2.426-1.493-.896-.8-1.5-1.787-1.275-2.122.176-.302.2-.473.351-.749.151-.276.075-.513-.038-.739-.113-.226-.68-1.637-.932-2.242-.246-.591-.496-.511-.68-.521-.176-.009-.377-.01-.58-.01-.202 0-.531.076-.808.377-.277.302-1.059 1.033-1.059 2.517 0 1.485 1.082 2.92 1.233 3.122.151.202 2.13 3.251 5.16 4.558.72.311 1.281.497 1.719.636.723.23 1.381.19 1.901.112.579-.088 1.786-.73 2.038-1.436.252-.704.252-1.307.176-1.436-.075-.127-.277-.202-.579-.353z"/></svg>
+                        WhatsApp Me
+                    </a>
+                </div>
+            </nav>
+
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <h3></h3>
+                    <h1>Hi! I am<br>Sarfaraz</h1>
+                </div>
+                <div class="hero-right-text">
+                    <h2>My Main Target is Always to make Visualize The Viewr , WITHOUT ANY EFFORT</h2>
+                    <p>The more Easy They Understand The more They Learn.</p>
+                    <h2>Here what i Make </h2>
+                </div>
+            </div>
+
+            <div class="hero-badges-row" id="badges-section">
+                <div class="badge-item"><span>#01</span><p>Simple Edits</p></div>
+                <div class="badge-item"><span>#02</span><p>Cinematic Motion Graphics</p></div>
+                <div class="badge-item"><span>#03</span><p>Premium Ui Animations</p></div>
+                <div class="badge-item"><span>#04</span><p>What You want !</p></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="brand-ticker-section">
+        <div class="container">
+            <div class="ticker-wrapper">
+                <div class="ticker-title">Trusted By everyone I have Worked with..</div>
+                <div class="brand-logos">
+                    <div class="logo-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/></svg>Simplicity</div>
+                    <div class="logo-item"><svg viewBox="0 0 24 24"><polygon points="12,2 2,22 22,22" stroke="currentColor" stroke-width="2" fill="none"/></svg>Diverse</div>
+                    <div class="logo-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"/></svg>Creative</div>
+                    <div class="logo-item"><svg viewBox="0 0 24 24"><path d="M12 2 L22 12 L12 22 L2 12 Z" stroke="currentColor" stroke-width="2" fill="none"/></svg>Unique</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="split-section" id="about">
+        <div class="container">
+            <div class="split-grid">
+                <div class="split-left">
+                    <span class="section-tag">Behind the Editing There is .....</span>
+                    <h2>4 years of experience , From Simple Phone To desktop </h2>
+                </div>
+                <div class="split-right">
+                    <h3>3 years in mobile, 1 years in Desktop. Hundreds of Clients , Varieties of clients with immersive demands.</h3>
+                    <div class="split-right-footer">
+                        <p>Let's Build Something<br>Meaningful Together</p>
+                        <div class="split-actions">
+                            <a href="mailto:sarfaraz75010@gmail.com?subject=Video%20Editing%20Inquiry" class="btn-orange">Email Me <div class="arrow-circle">→</div></a>
+                            <a href="https://wa.me/7501016646?text=Hi%20Sarfaraz,%20I'm%20interested%20in%20your%20video%20editing%20services!" target="_blank" class="btn-whatsapp">
+                                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.528 1.981 14.063.957 11.43.957c-5.442 0-9.87 4.372-9.874 9.802-.001 1.73.463 3.42 1.345 4.927l-.997 3.641 3.743-.973zm11.567-7.423c-.302-.151-1.786-.881-2.062-.981-.277-.1-.478-.151-.68.151-.202.302-.782.981-.96 1.182-.177.201-.355.226-.657.076-.301-.151-1.274-.47-2.426-1.493-.896-.8-1.5-1.787-1.275-2.122.176-.302.2-.473.351-.749.151-.276.075-.513-.038-.739-.113-.226-.68-1.637-.932-2.242-.246-.591-.496-.511-.68-.521-.176-.009-.377-.01-.58-.01-.202 0-.531.076-.808.377-.277.302-1.059 1.033-1.059 2.517 0 1.485 1.082 2.92 1.233 3.122.151.202 2.13 3.251 5.16 4.558.72.311 1.281.497 1.719.636.723.23 1.381.19 1.901.112.579-.088 1.786-.73 2.038-1.436.252-.704.252-1.307.176-1.436-.075-.127-.277-.202-.579-.353z"/></svg>
+                                WhatsApp Me
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PORTFOLIO SECTION with moving premium gradient -->
+    <div class="portfolio-section" id="projects">
+        <div class="portfolio-gradient-shimmer"></div>
+        <div class="portfolio-orb portfolio-orb-1"></div>
+        <div class="portfolio-orb portfolio-orb-2"></div>
+        <div class="portfolio-orb portfolio-orb-3"></div>
+        <div class="portfolio-orb portfolio-orb-4"></div>
+
+        <div class="container">
+            <h2 class="category-heading">Recreation</h2>
+            <div class="sound-showcase-grid">
+                <div class="sound-card">
+                    <div class="sound-video-container">
+                        <div class="sound-card-logo">After</div>
+                        <video loop muted playsinline preload="metadata" class="portfolio-sound-video">
+                            <source src="fvj.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="sound-meta-container">
+                        <div class="sound-info">
+                            <div class="sound-title-block">
+                                <h4>Recreated</h4>
+                                <p>Atmospheric Audio & Dynamic Story</p>
+                            </div>
+                        </div>
+                        <div class="sound-controls">
+                            <button class="play-btn" aria-label="Play Sound Clip">
+                                <svg viewBox="0 0 24 24" class="play-svg"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="waveform-container">
+                                <svg viewBox="0 0 100 32" preserveAspectRatio="none" class="waveform-svg">
+                                    <defs><clipPath id="wave-clip-1"><rect class="wave-mask-rect" x="0" y="0" width="0" height="32"/></clipPath></defs>
+                                    <g class="wave-bg">
+                                        <rect x="2" y="10" width="3" height="12" rx="1.5"/><rect x="8" y="6" width="3" height="20" rx="1.5"/>
+                                        <rect x="14" y="12" width="3" height="8" rx="1.5"/><rect x="20" y="4" width="3" height="24" rx="1.5"/>
+                                        <rect x="26" y="8" width="3" height="16" rx="1.5"/><rect x="32" y="14" width="3" height="4" rx="1.5"/>
+                                        <rect x="38" y="6" width="3" height="20" rx="1.5"/><rect x="44" y="2" width="3" height="28" rx="1.5"/>
+                                        <rect x="50" y="10" width="3" height="12" rx="1.5"/><rect x="56" y="5" width="3" height="22" rx="1.5"/>
+                                        <rect x="62" y="11" width="3" height="10" rx="1.5"/><rect x="68" y="7" width="3" height="18" rx="1.5"/>
+                                        <rect x="74" y="3" width="3" height="26" rx="1.5"/><rect x="80" y="12" width="3" height="8" rx="1.5"/>
+                                        <rect x="86" y="8" width="3" height="16" rx="1.5"/><rect x="92" y="5" width="3" height="22" rx="1.5"/>
+                                    </g>
+                                    <g class="wave-progress" clip-path="url(#wave-clip-1)">
+                                        <rect x="2" y="10" width="3" height="12" rx="1.5"/><rect x="8" y="6" width="3" height="20" rx="1.5"/>
+                                        <rect x="14" y="12" width="3" height="8" rx="1.5"/><rect x="20" y="4" width="3" height="24" rx="1.5"/>
+                                        <rect x="26" y="8" width="3" height="16" rx="1.5"/><rect x="32" y="14" width="3" height="4" rx="1.5"/>
+                                        <rect x="38" y="6" width="3" height="20" rx="1.5"/><rect x="44" y="2" width="3" height="28" rx="1.5"/>
+                                        <rect x="50" y="10" width="3" height="12" rx="1.5"/><rect x="56" y="5" width="3" height="22" rx="1.5"/>
+                                        <rect x="62" y="11" width="3" height="10" rx="1.5"/><rect x="68" y="7" width="3" height="18" rx="1.5"/>
+                                        <rect x="74" y="3" width="3" height="26" rx="1.5"/><rect x="80" y="12" width="3" height="8" rx="1.5"/>
+                                        <rect x="86" y="8" width="3" height="16" rx="1.5"/><rect x="92" y="5" width="3" height="22" rx="1.5"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sound-card">
+                    <div class="sound-video-container">
+                        <div class="sound-card-logo">Before</div>
+                        <video loop muted playsinline preload="metadata" class="portfolio-sound-video">
+                            <source src="Before.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="sound-meta-container">
+                        <div class="sound-info">
+                            <div class="sound-title-block">
+                                <h4>Slow Paced Transition based</h4>
+                                <p>Minimal and Less Attractive</p>
+                            </div>
+                        </div>
+                        <div class="sound-controls">
+                            <button class="play-btn" aria-label="Play Sound Clip">
+                                <svg viewBox="0 0 24 24" class="play-svg"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="waveform-container">
+                                <svg viewBox="0 0 100 32" preserveAspectRatio="none" class="waveform-svg">
+                                    <defs><clipPath id="wave-clip-2"><rect class="wave-mask-rect" x="0" y="0" width="0" height="32"/></clipPath></defs>
+                                    <g class="wave-bg">
+                                        <rect x="2" y="14" width="3" height="4" rx="1.5"/><rect x="8" y="12" width="3" height="8" rx="1.5"/>
+                                        <rect x="14" y="10" width="3" height="12" rx="1.5"/><rect x="20" y="8" width="3" height="16" rx="1.5"/>
+                                        <rect x="26" y="5" width="3" height="22" rx="1.5"/><rect x="32" y="3" width="3" height="26" rx="1.5"/>
+                                        <rect x="38" y="2" width="3" height="28" rx="1.5"/><rect x="44" y="6" width="3" height="20" rx="1.5"/>
+                                        <rect x="50" y="8" width="3" height="16" rx="1.5"/><rect x="56" y="11" width="3" height="10" rx="1.5"/>
+                                        <rect x="62" y="13" width="3" height="6" rx="1.5"/><rect x="68" y="9" width="3" height="14" rx="1.5"/>
+                                        <rect x="74" y="4" width="3" height="24" rx="1.5"/><rect x="80" y="2" width="3" height="28" rx="1.5"/>
+                                        <rect x="86" y="6" width="3" height="20" rx="1.5"/><rect x="92" y="12" width="3" height="8" rx="1.5"/>
+                                    </g>
+                                    <g class="wave-progress" clip-path="url(#wave-clip-2)">
+                                        <rect x="2" y="14" width="3" height="4" rx="1.5"/><rect x="8" y="12" width="3" height="8" rx="1.5"/>
+                                        <rect x="14" y="10" width="3" height="12" rx="1.5"/><rect x="20" y="8" width="3" height="16" rx="1.5"/>
+                                        <rect x="26" y="5" width="3" height="22" rx="1.5"/><rect x="32" y="3" width="3" height="26" rx="1.5"/>
+                                        <rect x="38" y="2" width="3" height="28" rx="1.5"/><rect x="44" y="6" width="3" height="20" rx="1.5"/>
+                                        <rect x="50" y="8" width="3" height="16" rx="1.5"/><rect x="56" y="11" width="3" height="10" rx="1.5"/>
+                                        <rect x="62" y="13" width="3" height="6" rx="1.5"/><rect x="68" y="9" width="3" height="14" rx="1.5"/>
+                                        <rect x="74" y="4" width="3" height="24" rx="1.5"/><rect x="80" y="2" width="3" height="28" rx="1.5"/>
+                                        <rect x="86" y="6" width="3" height="20" rx="1.5"/><rect x="92" y="12" width="3" height="8" rx="1.5"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="category-heading">UI Animations</h2>
+            <div class="showcase-grid">
+                <div class="showcase-card"><video autoplay loop muted playsinline preload="metadata"><source src="Uianimation56.mp4" type="video/mp4"></video></div>
+                <div class="showcase-card"><video autoplay loop muted playsinline preload="metadata"><source src="Uiporfolio.mp4" type="video/mp4"></video></div>
+                <div class="showcase-card"><video autoplay loop muted playsinline preload="metadata"><source src="Ui.mp4" type="video/mp4"></video></div>
+            </div>
+
+            <h2 class="category-heading">Cinematic Motion Graphics</h2>
+            <div class="showcase-grid">
+                <div class="showcase-card"><video autoplay loop muted playsinline preload="metadata"><source src="3d.mp4" type="video/mp4"></video></div>
+                <div class="showcase-card"><video autoplay loop muted playsinline preload="metadata"><source src="Finalani.mp4" type="video/mp4"></video></div>
+                <div class="showcase-card"><video autoplay loop muted playsinline preload="metadata"><source src="Heart.mp4" type="video/mp4"></video></div>
+            </div>
+
+            <h2 class="category-heading">Other Works</h2>
+            <div class="showcase-grid">
+                <div class="showcase-card"><video autoplay loop muted playsinline preload="metadata"><source src="poster.mp4" type="video/mp4"></video></div>
+                <div class="showcase-card"><video autoplay loop muted playsinline preload="metadata"><source src="fvj.mp4" type="video/mp4"></video></div>
+                <div class="showcase-card"><video autoplay loop muted playsinline preload="metadata"><source src="loweeres.mp4" type="video/mp4"></video></div>
+            </div>
+
+            <h2 class="category-heading">Reel Edits & Engagement Shorts</h2>
+            <div class="reel-grid">
+                <div class="reel-card"><video autoplay loop muted playsinline preload="metadata"><source src="oil.mp4" type="video/mp4"></video></div>
+                <div class="reel-card"><video autoplay loop muted playsinline preload="metadata"><source src="newf.mp4" type="video/mp4"></video></div>
+                <div class="reel-card"><video autoplay loop muted playsinline preload="metadata"><source src="reel.mp4" type="video/mp4"></video></div>
+                <div class="reel-card"><video autoplay loop muted playsinline preload="metadata"><source src="reel-video-4.mp4" type="video/mp4"></video></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const badgesSection = document.getElementById("badges-section");
+            const badgeItems = document.querySelectorAll(".badge-item");
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        badgeItems.forEach((item, index) => {
+                            setTimeout(() => { item.classList.add("animate-underline"); }, index * 250);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, threshold: 0.2 });
+            if (badgesSection) observer.observe(badgesSection);
+
+            document.querySelectorAll('.sound-card').forEach(card => {
+                const video = card.querySelector('.portfolio-sound-video');
+                const playBtn = card.querySelector('.play-btn');
+                const playIcon = card.querySelector('.play-svg');
+                const maskRect = card.querySelector('.wave-mask-rect');
+                const waveContainer = card.querySelector('.waveform-container');
+
+                function togglePlay() {
+                    if (video.paused) {
+                        document.querySelectorAll('.portfolio-sound-video').forEach(v => {
+                            if (v !== video) { v.pause(); v.closest('.sound-card').querySelector('.play-svg').innerHTML = '<path d="M8 5v14l11-7z"/>'; }
+                        });
+                        video.play();
+                        playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+                    } else {
+                        video.pause();
+                        playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                    }
+                }
+                playBtn.addEventListener('click', togglePlay);
+                video.addEventListener('timeupdate', () => {
+                    if (video.duration) maskRect.setAttribute('width', (video.currentTime / video.duration) * 100);
+                });
+                video.addEventListener('seeked', () => { if (video.currentTime === 0) maskRect.setAttribute('width', '0'); });
+                waveContainer.addEventListener('click', (e) => {
+                    const rect = waveContainer.getBoundingClientRect();
+                    if (video.duration) {
+                        video.currentTime = ((e.clientX - rect.left) / rect.width) * video.duration;
+                        if (video.paused) { video.play(); playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
         * {
             margin: 0;
             padding: 0;
